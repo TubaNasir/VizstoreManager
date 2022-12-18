@@ -246,7 +246,6 @@ class _AddProductState extends State<AddProduct> {
                                         ),
                                         child: Theme(
                                           data: Theme.of(context).copyWith(
-                                            // <- Here
                                             splashColor:
                                                 Colors.transparent, // <- Here
                                             highlightColor:

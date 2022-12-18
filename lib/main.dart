@@ -14,7 +14,6 @@ import 'package:provider/provider.dart';
 import 'package:vizstore_manager/controllers/side_drawer_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'repositories/user_repository.dart';
 
 final getIt = GetIt.instance;
