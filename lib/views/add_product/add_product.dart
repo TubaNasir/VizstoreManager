@@ -315,9 +315,6 @@ class _AddProductState extends State<AddProduct> {
                                           _descriptionController.clear();
                                           _quantityController.clear();
                                           _priceController.clear();
-                                          context
-                                              .read<AddProductProvider>()
-                                              .showCartToast();
                                         }
                                       }
                                       else{
