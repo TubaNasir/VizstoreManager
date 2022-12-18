@@ -43,7 +43,7 @@ Future<void> main() async {
         ),
       ),
       ChangeNotifierProvider(
-        create: (_) => OrderListProvider(getIt.get(instanceName: 'store'),getIt.get(instanceName: 'order'),getIt.get(instanceName: 'user'),
+        create: (_) => OrderListProvider(getIt.get(instanceName: 'order'),
         ),
       ),
       ChangeNotifierProvider(

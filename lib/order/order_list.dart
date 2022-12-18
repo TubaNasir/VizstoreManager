@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vizstore_manager/orders/widget/order_table.dart';
+import 'package:vizstore_manager/order/widget/order_table.dart';
 import 'package:vizstore_manager/widgets/side_drawer.dart';
 
 class OrderList extends StatelessWidget {

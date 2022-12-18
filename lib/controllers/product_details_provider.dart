@@ -1,7 +1,6 @@
 import 'dart:typed_data';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:vizstore_manager/constants.dart';
+import 'package:toast/toast.dart';
 import 'package:vizstore_manager/models/product_json.dart';
 import 'package:vizstore_manager/models/store_json.dart';
 import 'package:vizstore_manager/repositories/product_repository.dart';
@@ -41,7 +40,7 @@ class ProductDetailsProvider with ChangeNotifier {
     ProductJson updatedProduct = await _productRepository.updateProduct(product);
     _product = updatedProduct;
     notifyListeners();
-    print(_product.title);
+    Toast.show("Product updated", duration: Toast.lengthShort, gravity: Toast.top, backgroundColor: Colors.grey, backgroundRadius: 20.0);
   }
 
 

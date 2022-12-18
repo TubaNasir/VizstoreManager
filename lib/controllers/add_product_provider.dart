@@ -1,7 +1,6 @@
 import 'dart:typed_data';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:vizstore_manager/constants.dart';
+import 'package:toast/toast.dart';
 import 'package:vizstore_manager/models/product_json.dart';
 import 'package:vizstore_manager/models/store_json.dart';
 import 'package:vizstore_manager/repositories/product_repository.dart';
@@ -35,16 +34,7 @@ class AddProductProvider with ChangeNotifier {
       ProductJson(title: title, description: description, stock: stock, price: price, category: category, storeId: _user.id, image: '')
     , filebytes);
     notifyListeners();
-    return success;
-  }
-
-  void showCartToast(){
-    Fluttertoast.showToast(
-        msg: "Product has been added successfully",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.TOP,
-        backgroundColor: SecondaryColor,
-        textColor: Colors.black
-    );
+  Toast.show("Incorrect Email or Password", duration: Toast.lengthShort, gravity: Toast.top, backgroundColor: Colors.grey, backgroundRadius: 20.0);
+  return success;
   }
 }

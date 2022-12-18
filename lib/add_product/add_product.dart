@@ -3,6 +3,7 @@ import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:toast/toast.dart';
 import 'package:vizstore_manager/constants.dart';
 import 'package:vizstore_manager/controllers/add_product_provider.dart';
 import 'package:vizstore_manager/widgets/custom_button.dart';
@@ -37,6 +38,7 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       body: SafeArea(
         child: Row(
@@ -312,9 +314,6 @@ class _AddProductState extends State<AddProduct> {
                                         _descriptionController.clear();
                                         _quantityController.clear();
                                         _priceController.clear();
-                                        context
-                                            .read<AddProductProvider>()
-                                            .showCartToast();
                                       }
                                     }
                                   },

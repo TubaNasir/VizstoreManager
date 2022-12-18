@@ -21,7 +21,6 @@ class _LoginFormState extends State<LoginForm> {
     ToastContext().init(context);
 
     bool passwordVisible = context.watch<LoginProvider>().passwordVisible;
-    bool isLoading = context.watch<LoginProvider>().isLoading;
 
     return Padding(
       padding: EdgeInsets.all(16),
@@ -89,15 +88,6 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                           obscureText: !passwordVisible,
                           controller: _passwordController),
-                      isLoading ?
-                      SizedBox(
-                        height: 64,
-                        child: Container(
-                          height: 30,
-                          width:30,
-                          child: CircularProgressIndicator(),
-                        ),
-                      ):
                       SizedBox(
                         height: 64,
                       ),
