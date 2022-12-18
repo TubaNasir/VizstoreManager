@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vizstore_manager/constants.dart';
-import 'package:vizstore_manager/login/widgets/login_form.dart';
-import 'package:vizstore_manager/login/widgets/main_page_info.dart';
-import 'package:vizstore_manager/login/widgets/welcome_message.dart';
+import 'package:vizstore_manager/controllers/login_provider.dart';
+import 'package:vizstore_manager/views/login/widgets/login_form.dart';
+import 'package:vizstore_manager/views/login/widgets/main_page_info.dart';
+import 'package:vizstore_manager/views/login/widgets/welcome_message.dart';
+import 'package:vizstore_manager/widgets/loader.dart';
 
 class Login extends StatefulWidget {
 
@@ -15,8 +18,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
 
+    Size size = MediaQuery.of(context).size;
+    bool isLoading = context.watch<LoginProvider>().isLoading;
     return Scaffold(
       body: Container(
         width: size.width,
@@ -72,7 +76,17 @@ class _LoginState extends State<Login> {
               ),
             ),
 
-            LoginForm(),
+            Stack(
+              children: [
+                LoginForm(),
+                if(isLoading)
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.5,
+                      left: MediaQuery.of(context).size.width * 0.5,
+                      child: Loader()
+                  )
+              ],
+            ),
 
           ],
         ),

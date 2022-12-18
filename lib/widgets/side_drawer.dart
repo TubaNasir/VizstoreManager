@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/constants.dart';
 import 'package:vizstore_manager/controllers/product_list_provider.dart';
-import 'package:vizstore_manager/login/login.dart';
+import 'package:vizstore_manager/views/login/login.dart';
 import 'package:vizstore_manager/models/store_json.dart';
-import 'package:vizstore_manager/orders/order_list.dart';
-import 'package:vizstore_manager/product/product_list.dart';
+import 'package:vizstore_manager/views/order/order_list.dart';
+import 'package:vizstore_manager/views/product/product_list.dart';
 import 'package:vizstore_manager/widgets/custom_button.dart';
 import 'package:vizstore_manager/widgets/custom_button_secondary.dart';
 import 'package:vizstore_manager/widgets/drawer_list_tile.dart';
@@ -106,7 +106,8 @@ class _SideDrawerState extends State<SideDrawer> {
                                       builder: (context) => Login(),
                                     ),
                                   ),
-                                },
+                                  context.read<SideDrawerProvider>().setPage('products'),
+                              },
                                 text: 'Yes',
                               ),
                               CustomButton(

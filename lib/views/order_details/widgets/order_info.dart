@@ -20,6 +20,7 @@ class _OrderInfoState extends State<OrderInfo> {
     UserJson user = context.watch<OrderDetailsProvider>().user;
     
     return Container(
+      alignment: Alignment.topLeft,
       padding: EdgeInsets.symmetric(vertical:20.0),
       width: MediaQuery.of(context).size.width * 0.4,
       child: Column(
@@ -98,7 +99,7 @@ class _OrderInfoState extends State<OrderInfo> {
                     width: MediaQuery.of(context).size.width * 0.2,
                     child: Text("Total")
                 ),
-                Text("hardcoded"),
+                Text("Rs. ${order.total}"),
               ],
             ),
             Divider(

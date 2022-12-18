@@ -5,7 +5,7 @@ import 'package:vizstore_manager/controllers/order_details_provider.dart';
 import 'package:vizstore_manager/controllers/order_list_provider.dart';
 import 'package:vizstore_manager/controllers/product_details_provider.dart';
 import 'package:vizstore_manager/controllers/product_list_provider.dart';
-import 'package:vizstore_manager/login/login.dart';
+import 'package:vizstore_manager/views/login/login.dart';
 import 'package:vizstore_manager/repositories/order_repository.dart';
 import 'package:vizstore_manager/repositories/product_repository.dart';
 import 'package:vizstore_manager/repositories/store_repository.dart';
@@ -43,7 +43,7 @@ Future<void> main() async {
         ),
       ),
       ChangeNotifierProvider(
-        create: (_) => OrderListProvider(getIt.get(instanceName: 'store'),getIt.get(instanceName: 'order'),getIt.get(instanceName: 'user'),
+        create: (_) => OrderListProvider(getIt.get(instanceName: 'order'),
         ),
       ),
       ChangeNotifierProvider(

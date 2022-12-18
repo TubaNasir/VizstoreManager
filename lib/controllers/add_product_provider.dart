@@ -1,17 +1,13 @@
 import 'dart:typed_data';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:vizstore_manager/constants.dart';
+import 'package:toast/toast.dart';
 import 'package:vizstore_manager/models/product_json.dart';
 import 'package:vizstore_manager/models/store_json.dart';
 import 'package:vizstore_manager/repositories/product_repository.dart';
 import 'package:vizstore_manager/repositories/store_repository.dart';
 
-
 class AddProductProvider with ChangeNotifier {
-  AddProductProvider(
-      this._userRepository,
-      this._productRepository);
+  AddProductProvider(this._userRepository, this._productRepository);
 
   StoreRepository _userRepository;
   ProductRepository _productRepository;
@@ -25,26 +21,26 @@ class AddProductProvider with ChangeNotifier {
   Future<void> getUser() async {
     _user = await _userRepository.getStore();
     notifyListeners();
-    print('prodlist provider' + _user.storeName);
   }
 
-  Future<bool> addProduct(String title, String description, int stock, int price, String category, Uint8List filebytes) async {
-  print('prod prov ${_user.id}');
-  print("cat ${category}");
-  var success =  await _productRepository.addProduct(
-      ProductJson(title: title, description: description, stock: stock, price: price, category: category, storeId: _user.id, image: '')
-    , filebytes);
+  Future<bool> addProduct(String title, String description, int stock,
+      int price, String category, Uint8List filebytes) async {
+    var success = await _productRepository.addProduct(
+        ProductJson(
+            title: title,
+            description: description,
+            stock: stock,
+            price: price,
+            category: category,
+            storeId: _user.id,
+            image: ''),
+        filebytes);
     notifyListeners();
+    Toast.show("Incorrect Email or Password",
+        duration: Toast.lengthShort,
+        gravity: Toast.top,
+        backgroundColor: Colors.grey,
+        backgroundRadius: 20.0);
     return success;
-  }
-
-  void showCartToast(){
-    Fluttertoast.showToast(
-        msg: "Product has been added successfully",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.TOP,
-        backgroundColor: SecondaryColor,
-        textColor: Colors.black
-    );
   }
 }

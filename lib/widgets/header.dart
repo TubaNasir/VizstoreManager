@@ -75,7 +75,7 @@ class _HeaderState extends State<Header> {
         ),
         Divider(
             color: Colors.black12,
-            height: 1
+            height: 2
         ),
       ],
     );
