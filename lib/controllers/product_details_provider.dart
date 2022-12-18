@@ -32,7 +32,6 @@ class ProductDetailsProvider with ChangeNotifier {
   Future<void> getUser() async {
     _user = await _userRepository.getStore();
     notifyListeners();
-    print('prodlist provider' + _user.storeName);
   }
 
   Future<void> updateProduct(String title, String description, int stock, int price, String category) async {

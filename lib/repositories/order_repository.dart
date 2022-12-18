@@ -20,7 +20,6 @@ class OrderRepository {
             OrderJson.fromJson(doc.data() as Map<String, dynamic>, doc.id));
       }
     }).catchError((error) => print("Failed to fetch user. Error : ${error}"));
-    print(products);
     return products;
   }
 
@@ -31,15 +30,10 @@ class OrderRepository {
     await db.collection("order").doc(id).get().then((event) {
       order = OrderJson.fromJson(event.data() as Map<String, dynamic>, event.id);
     }).catchError((error) => print("Failed to fetch store. Error : ${error}"));
-
-    print('order repo product ${order}');
     return order;
   }
 
   Future<void> updateOrder(OrderJson order) async {
-    //print('quantity ${user.cart[0].quantity}');
-    //print('id ${user.id}');
-
     await db
         .collection("order")
         .doc(order.id)

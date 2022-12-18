@@ -12,18 +12,15 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async => {
-      await context.read<ProductListProvider>().getStore()
-    });
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) async => {await context.read<ProductListProvider>().getStore()});
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: Row(
@@ -43,8 +40,3 @@ class _ProductListState extends State<ProductList> {
     );
   }
 }
-
-
-
-
-

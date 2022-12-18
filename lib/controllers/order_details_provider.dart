@@ -1,14 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vizstore_manager/models/order_json.dart';
 import 'package:vizstore_manager/models/product_json.dart';
-import 'package:vizstore_manager/models/store_json.dart';
 import 'package:vizstore_manager/models/user_json.dart';
 import 'package:vizstore_manager/repositories/order_repository.dart';
 import 'package:vizstore_manager/repositories/product_repository.dart';
-import 'package:vizstore_manager/repositories/store_repository.dart';
 import 'package:vizstore_manager/repositories/user_repository.dart';
-
 
 class OrderDetailsProvider with ChangeNotifier {
   OrderDetailsProvider(

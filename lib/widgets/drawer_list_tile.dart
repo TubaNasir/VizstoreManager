@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:vizstore_manager/constants.dart';
-import 'package:vizstore_manager/controllers/side_drawer_provider.dart';
 
 class DrawerListTile extends StatelessWidget {
   const DrawerListTile({
@@ -22,10 +19,13 @@ class DrawerListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         onTap: onTap,
-        leading: Icon(icon,
-            color: selected ? Colors.white : TextColor2,
-            size: 16),
-        title: Text(title, style: selected? TextStyle(color: Colors.white, fontWeight: FontWeight.bold) : TextStyle(color: TextColor2),)
-    );
+        leading:
+            Icon(icon, color: selected ? Colors.white : TextColor2, size: 16),
+        title: Text(
+          title,
+          style: selected
+              ? TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+              : TextStyle(color: TextColor2),
+        ));
   }
 }

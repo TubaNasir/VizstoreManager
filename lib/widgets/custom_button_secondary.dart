@@ -13,7 +13,6 @@ class CustomButtonSecondary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      //width: MediaQuery.of(context).size.width,
       height: 30,
       child: TextButton(
         style: TextButton.styleFrom(
@@ -26,18 +25,20 @@ class CustomButtonSecondary extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors:
-            [Color(0xB0AAAAFD), Color(0xCBC5C5FF)]),
+                colors: [Color(0xB0AAAAFD), Color(0xCBC5C5FF)]),
             borderRadius: BorderRadius.all(Radius.circular(80.0)),
           ),
           child: Container(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal:12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
                 text,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(color: TextColor1, fontWeight: FontWeight.w500),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(color: TextColor1, fontWeight: FontWeight.w500),
               ),
             ),
           ),

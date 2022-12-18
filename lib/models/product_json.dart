@@ -10,7 +10,7 @@ class ProductJson {
   final int stock;
   final int sold; //stock
 
-   ProductJson({
+  ProductJson({
     this.id,
     required this.image,
     required this.title,
@@ -22,16 +22,16 @@ class ProductJson {
     this.sold = 0,
   });
 
-  ProductJson copyWith({
-    String? id,
-    String? image,
-    String? title,
-    int? price,
-    String? description,
-    String? storeId,
-    String? category,
-    int? stock,
-    int? sold}) =>
+  ProductJson copyWith(
+          {String? id,
+          String? image,
+          String? title,
+          int? price,
+          String? description,
+          String? storeId,
+          String? category,
+          int? stock,
+          int? sold}) =>
       ProductJson(
         id: id ?? this.id,
         image: image ?? this.image,

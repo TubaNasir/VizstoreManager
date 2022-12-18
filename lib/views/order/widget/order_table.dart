@@ -36,13 +36,15 @@ class _OrderTableState extends State<OrderTable> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('My Orders',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1
-                          ?.copyWith(fontWeight: FontWeight.bold)),
-                ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('My Orders',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1
+                              ?.copyWith(fontWeight: FontWeight.bold)),
+                    ]),
                 SizedBox(height: 10),
                 Container(
                   padding: EdgeInsets.all(4.0),
@@ -93,7 +95,7 @@ class _OrderTableState extends State<OrderTable> {
                 ),
               ]),
             ),
-            if(isLoading)
+            if (isLoading)
               Positioned(
                   top: MediaQuery.of(context).size.height * 0.5,
                   left: MediaQuery.of(context).size.width * 0.5,

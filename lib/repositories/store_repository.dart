@@ -1,21 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:vizstore_manager/models/product_json.dart';
 import 'package:vizstore_manager/models/store_json.dart';
 
 class StoreRepository {
   final db = FirebaseFirestore.instance;
   FirebaseAuth firebaseauth = FirebaseAuth.instance;
-
   StoreJson _user = StoreJson.empty();
 
   Future<StoreJson> getStore() async {
     String? id = firebaseauth.currentUser?.uid;
     print(id);
     await db.collection("store").doc(id).get().then((event) {
-      _user = StoreJson.fromJson(event.data() as Map<String, dynamic>, event.id);
-    }).catchError(
-            (error) => print("Failed to fetch user. Error : ${error}"));
+      _user =
+          StoreJson.fromJson(event.data() as Map<String, dynamic>, event.id);
+    }).catchError((error) => print("Failed to fetch user. Error : ${error}"));
     return _user;
   }
 
@@ -44,5 +42,4 @@ class StoreRepository {
     print(_user.storeName);
     _user = newUser;
   }
-
 }

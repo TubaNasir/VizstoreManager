@@ -26,8 +26,3 @@ class OrderList extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
