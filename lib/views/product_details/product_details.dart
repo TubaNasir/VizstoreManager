@@ -22,10 +22,10 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _AddProductState extends State<ProductDetails> {
-  TextEditingController _titleController = new TextEditingController();
-  TextEditingController _descriptionController = new TextEditingController();
-  TextEditingController _priceController = new TextEditingController();
-  TextEditingController _quantityController = new TextEditingController();
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
+  TextEditingController _priceController = TextEditingController();
+  TextEditingController _quantityController = TextEditingController();
 
   bool editable = false;
   bool enabled = true;
