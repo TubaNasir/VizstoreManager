@@ -175,7 +175,8 @@ class _AddProductFormState extends State<AddProductForm> {
                   ],
                 ),
                 SizedBox(height: 30),
-                Stack(children: [
+                Stack(
+                    children: [
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: "Category",
@@ -221,8 +222,9 @@ class _AddProductFormState extends State<AddProductForm> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Row(
+                    ]),
+                SizedBox(height: 20),
+                Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
@@ -255,7 +257,6 @@ class _AddProductFormState extends State<AddProductForm> {
                           )),
                     ],
                   )
-                ]),
               ],
             ),
           ),

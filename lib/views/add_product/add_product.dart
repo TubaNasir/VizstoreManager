@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 import 'package:vizstore_manager/controllers/add_product_provider.dart';
+import 'package:vizstore_manager/views/add_product/widgets/add_product_form.dart';
 import 'package:vizstore_manager/widgets/header.dart';
 import 'package:vizstore_manager/widgets/side_drawer.dart';
 
@@ -50,6 +51,7 @@ class _AddProductState extends State<AddProduct> {
                                 .textTheme
                                 .subtitle1
                                 ?.copyWith(fontWeight: FontWeight.bold)),
+                        AddProductForm()
                       ],
                     ),
                   ),
