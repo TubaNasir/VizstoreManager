@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/constants.dart';
 import 'package:vizstore_manager/controllers/login_provider.dart';
-import 'package:vizstore_manager/login/widgets/login_form.dart';
-import 'package:vizstore_manager/login/widgets/main_page_info.dart';
-import 'package:vizstore_manager/login/widgets/welcome_message.dart';
+import 'package:vizstore_manager/views/login/widgets/login_form.dart';
+import 'package:vizstore_manager/views/login/widgets/main_page_info.dart';
+import 'package:vizstore_manager/views/login/widgets/welcome_message.dart';
 import 'package:vizstore_manager/widgets/loader.dart';
 
 class Login extends StatefulWidget {
