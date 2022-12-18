@@ -19,15 +19,15 @@ class StoreRepository {
     return _user;
   }
 
-  Future<String?> signIn(String email, String password) async {
+  Future signIn(String email, String password) async {
+    User? user;
     try {
       UserCredential userCred = await firebaseauth.signInWithEmailAndPassword(
           email: email, password: password);
-
-      return userCred.user?.uid;
-      //getuser from uid
+      user = userCred.user;
+      return user?.uid;
     } catch (e) {
-      print(e); //add incorrect email or pass label if error
+      return e;
     }
   }
 

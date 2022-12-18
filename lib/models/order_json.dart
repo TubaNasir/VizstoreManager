@@ -25,7 +25,7 @@ class OrderJson {
 
   OrderJson.empty()
       : id = '',
-        userId = 'h',
+        userId = '',
         storeId = '',
         cart = [],
         status = '',

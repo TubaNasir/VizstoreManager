@@ -24,7 +24,6 @@ class _AddProductState extends State<AddProduct> {
   TextEditingController _quantityController = new TextEditingController();
   String dropdownvalue = 'Clothes';
   var picked = null;
-
   final _formKey = GlobalKey<FormState>();
   late Uint8List fileBytes;
 

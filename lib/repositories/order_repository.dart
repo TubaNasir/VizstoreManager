@@ -8,6 +8,7 @@ class OrderRepository {
 
   Future<List<OrderJson>> getMyOrders() async {
     String? id = firebaseauth.currentUser?.uid;
+    print(id);
     List<OrderJson> products = [];
     await db
         .collection("order")

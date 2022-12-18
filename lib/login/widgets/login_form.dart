@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toast/toast.dart';
 import 'package:vizstore_manager/constants.dart';
 import 'package:vizstore_manager/controllers/login_provider.dart';
 import 'package:vizstore_manager/product/product_list.dart';
@@ -17,7 +18,10 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
+
     bool passwordVisible = context.watch<LoginProvider>().passwordVisible;
+    bool isLoading = context.watch<LoginProvider>().isLoading;
 
     return Padding(
       padding: EdgeInsets.all(16),
@@ -85,26 +89,29 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                           obscureText: !passwordVisible,
                           controller: _passwordController),
+                      isLoading ?
+                      SizedBox(
+                        height: 64,
+                        child: Container(
+                          height: 30,
+                          width:30,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ):
                       SizedBox(
                         height: 64,
                       ),
                       InkWell(
                         onTap: () async {
-                          try {
-                            await context.read<LoginProvider>().signIn(_emailController.text, _passwordController.text);
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductList(),
-                              ),
-                            );
-                          }
-                          catch (e) {
-                            // setState(() {
-                            //   context.read<LoginProvider>().changeErrorMessage();
-                            // });
-                            // print(e); //add incorrect email or pass label if error
-                          }
+                            Future<bool> success = context.read<LoginProvider>().signIn(_emailController.text, _passwordController.text);
+                            if (await success == true){
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ProductList(),
+                                ),
+                              );
+                            }
                         },
                         child: Container(
                           height: 50,
