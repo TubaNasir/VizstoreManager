@@ -13,7 +13,6 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      //width: MediaQuery.of(context).size.width,
       height: 30,
       child: TextButton(
         style: TextButton.styleFrom(
@@ -29,11 +28,14 @@ class CustomButton extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal:12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
                 text,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(color: TextColor1, fontWeight: FontWeight.w600),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(color: TextColor1, fontWeight: FontWeight.w600),
               ),
             ),
           ),

@@ -22,11 +22,13 @@ class UserJson {
         contact = '',
         photoUrl = '';
 
-  UserJson copyWith({String? id,
+  UserJson copyWith({
+    String? id,
     String? firstName,
     String? lastName,
     String? contact,
-    String? email,}) =>
+    String? email,
+  }) =>
       UserJson(
         id: id ?? this.id,
         firstName: firstName ?? this.firstName,
@@ -53,5 +55,5 @@ class UserJson {
         "lastName": lastName,
         "contact": contact,
         "photoUrl": photoUrl,
-  };
+      };
 }

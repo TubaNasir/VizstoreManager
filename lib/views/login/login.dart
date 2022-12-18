@@ -8,7 +8,6 @@ import 'package:vizstore_manager/views/login/widgets/welcome_message.dart';
 import 'package:vizstore_manager/widgets/loader.dart';
 
 class Login extends StatefulWidget {
-
   const Login({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +17,6 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     bool isLoading = context.watch<LoginProvider>().isLoading;
     return Scaffold(
@@ -37,15 +35,11 @@ class _LoginState extends State<Login> {
                 Container(
                     height: double.infinity,
                     width: size.width * 0.5,
-                    color: SecondaryColor
-                ),
+                    color: SecondaryColor),
               ],
             ),
-
             WelcomeMessage(),
-
             MainPageInfo(),
-
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
@@ -53,17 +47,14 @@ class _LoginState extends State<Login> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-
                     Icon(
                       Icons.copyright,
                       color: Colors.grey,
                       size: 24,
                     ),
-
                     SizedBox(
                       width: 8,
                     ),
-
                     Text(
                       "Copyright 2022",
                       style: TextStyle(
@@ -75,25 +66,19 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-
             Stack(
               children: [
                 LoginForm(),
-                if(isLoading)
+                if (isLoading)
                   Positioned(
                       top: MediaQuery.of(context).size.height * 0.5,
                       left: MediaQuery.of(context).size.width * 0.5,
-                      child: Loader()
-                  )
+                      child: Loader())
               ],
             ),
-
           ],
         ),
       ),
     );
-
   }
 }
-
-

@@ -113,11 +113,11 @@ class _ProductTableState extends State<ProductTable> {
                 ),
               ]),
             ),
-            if(isLoading)
-            Positioned(
-                top: MediaQuery.of(context).size.height * 0.5,
-                left: MediaQuery.of(context).size.width * 0.5,
-                child: Loader())
+            if (isLoading)
+              Positioned(
+                  top: MediaQuery.of(context).size.height * 0.5,
+                  left: MediaQuery.of(context).size.width * 0.5,
+                  child: Loader())
           ],
         ),
       ],

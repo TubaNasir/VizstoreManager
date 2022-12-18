@@ -79,10 +79,13 @@ class _LoginFormState extends State<LoginForm> {
                             hintText: 'Password',
                             labelText: 'Password',
                             suffixIcon: IconButton(
-                              icon: Icon(
-                                  passwordVisible ? Icons.visibility : Icons.visibility_off),
+                              icon: Icon(passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
                               onPressed: () {
-                                context.read<LoginProvider>().changePasswordVisible();
+                                context
+                                    .read<LoginProvider>()
+                                    .changePasswordVisible();
                               },
                             ),
                           ),
@@ -93,15 +96,17 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       InkWell(
                         onTap: () async {
-                            Future<bool> success = context.read<LoginProvider>().signIn(_emailController.text, _passwordController.text);
-                            if (await success == true){
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductList(),
-                                ),
-                              );
-                            }
+                          Future<bool> success = context
+                              .read<LoginProvider>()
+                              .signIn(_emailController.text,
+                                  _passwordController.text);
+                          if (await success == true) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ProductList(),
+                              ),
+                            );
+                          }
                         },
                         child: Container(
                           height: 50,

@@ -34,15 +34,15 @@ class OrderJson {
         address = '',
         total = 0;
 
-  OrderJson copyWith({
-    String? id,
-    String? userId,
-    String? storeId,
-    List<CartItemJson>? cart,
-    String? status,
-    DateTime? date_created,
-    String? city,
-    String? address}) =>
+  OrderJson copyWith(
+          {String? id,
+          String? userId,
+          String? storeId,
+          List<CartItemJson>? cart,
+          String? status,
+          DateTime? date_created,
+          String? city,
+          String? address}) =>
       OrderJson(
         id: id ?? this.id,
         userId: userId ?? this.userId,
@@ -56,24 +56,26 @@ class OrderJson {
       );
 
   factory OrderJson.fromJson(Map<String, dynamic> json, String id) => OrderJson(
-    id: id,
-    userId: json["userId"] as String? ?? '',
-    storeId: json["storeId"] as String? ?? '',
-    cart: List<CartItemJson>.from(json["cart"].map((x) => CartItemJson.fromJson(x))),
-    status: json["status"] as String? ?? '',
-    date_created: json["date_created"].toDate() as DateTime? ?? DateTime.now(),
-    city: json["city"] as String? ?? '',
-    address: json["address"] as String? ?? '',
-    total: json["total"] as int? ?? -1,
-  );
+        id: id,
+        userId: json["userId"] as String? ?? '',
+        storeId: json["storeId"] as String? ?? '',
+        cart: List<CartItemJson>.from(
+            json["cart"].map((x) => CartItemJson.fromJson(x))),
+        status: json["status"] as String? ?? '',
+        date_created:
+            json["date_created"].toDate() as DateTime? ?? DateTime.now(),
+        city: json["city"] as String? ?? '',
+        address: json["address"] as String? ?? '',
+        total: json["total"] as int? ?? -1,
+      );
 
   Map<String, dynamic> toJson() => {
-    "userId": userId,
-    "cart": List<dynamic>.from(cart.map((x) => x.toJson())),
-    "status": status,
-    "date_created": date_created,
-    "city": city,
-    "address": address,
-    "total": total,
-  };
+        "userId": userId,
+        "cart": List<dynamic>.from(cart.map((x) => x.toJson())),
+        "status": status,
+        "date_created": date_created,
+        "city": city,
+        "address": address,
+        "total": total,
+      };
 }

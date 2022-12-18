@@ -3,7 +3,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vizstore_manager/models/product_json.dart';
-import 'package:vizstore_manager/models/store_json.dart';
 
 class ProductRepository {
   final db = FirebaseFirestore.instance;
@@ -33,7 +32,6 @@ class ProductRepository {
             ProductJson.fromJson(doc.data() as Map<String, dynamic>, doc.id));
       }
     }).catchError((error) => print("Failed to fetch user. Error : ${error}"));
-    print(products);
     return products;
   }
 
@@ -63,7 +61,8 @@ class ProductRepository {
     return bool;
   }
 
-  Future<ProductJson> changeImage(ProductJson product, Uint8List filebytes) async {
+  Future<ProductJson> changeImage(
+      ProductJson product, Uint8List filebytes) async {
     ProductJson p = ProductJson.empty();
 
     await FirebaseStorage.instance.refFromURL(product.image).delete();
@@ -84,7 +83,6 @@ class ProductRepository {
 
   Future<ProductJson> updateProduct(ProductJson product) async {
     ProductJson p = ProductJson.empty();
-    print(product.id);
     await db
         .collection("product")
         .doc(product.id)
@@ -98,12 +96,12 @@ class ProductRepository {
         .collection('product')
         .doc(product.id)
         .get()
-        .then((event) =>
-            {
-              p = ProductJson.fromJson(event.data() as Map<String, dynamic>, event.id)
+        .then((event) => {
+              p = ProductJson.fromJson(
+                  event.data() as Map<String, dynamic>, event.id)
             })
-        .catchError((error) => print("Failed to get product. Error : ${error}"));
+        .catchError(
+            (error) => print("Failed to get product. Error : ${error}"));
     return p;
   }
-
 }

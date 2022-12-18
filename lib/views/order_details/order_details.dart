@@ -2,13 +2,9 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/controllers/order_details_provider.dart';
-import 'package:vizstore_manager/models/order_json.dart';
-import 'package:vizstore_manager/models/user_json.dart';
 import 'package:vizstore_manager/views/order_details/widgets/order_info.dart';
 import 'package:vizstore_manager/views/order_details/widgets/order_summary.dart';
 import 'package:vizstore_manager/views/order_details/widgets/title_row.dart';
-import 'package:vizstore_manager/widgets/custom_button.dart';
-import 'package:vizstore_manager/widgets/custom_button_secondary.dart';
 import 'package:vizstore_manager/widgets/header.dart';
 import 'package:vizstore_manager/widgets/side_drawer.dart';
 
@@ -26,13 +22,11 @@ class _AddProductState extends State<OrderDetails> {
     WidgetsBinding.instance.addPostFrameCallback((_) async => {
           await context.read<OrderDetailsProvider>().getOrderInfo(widget.id),
           await context.read<OrderDetailsProvider>().getUserInfo(),
-
         });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: Row(
@@ -56,7 +50,6 @@ class _AddProductState extends State<OrderDetails> {
                         TitleRow(id: widget.id),
                         OrderInfo(),
                         OrderSummary(),
-
                       ],
                     ),
                   ),
