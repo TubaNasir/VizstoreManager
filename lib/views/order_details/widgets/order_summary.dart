@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/controllers/order_details_provider.dart';
 import 'package:vizstore_manager/models/order_json.dart';
-import 'package:vizstore_manager/order_details/widgets/order_item_table.dart';
+import 'package:vizstore_manager/views/order_details/widgets/order_item_table.dart';
 
 class OrderSummary extends StatefulWidget {
   const OrderSummary({

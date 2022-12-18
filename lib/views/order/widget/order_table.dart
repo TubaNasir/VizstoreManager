@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/controllers/order_list_provider.dart';
 import 'package:vizstore_manager/models/order_json.dart';
-import 'package:vizstore_manager/order_details/order_details.dart';
+import 'package:vizstore_manager/views/order_details/order_details.dart';
 import 'package:vizstore_manager/widgets/header.dart';
 import 'package:vizstore_manager/widgets/loader.dart';
 

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 import 'package:vizstore_manager/constants.dart';
 import 'package:vizstore_manager/controllers/login_provider.dart';
-import 'package:vizstore_manager/product/product_list.dart';
+import 'package:vizstore_manager/views/product/product_list.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);

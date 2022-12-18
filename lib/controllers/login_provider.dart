@@ -48,7 +48,6 @@ class LoginProvider with ChangeNotifier {
     }
     else if(result is FirebaseAuthException){
       Toast.show("Incorrect Email or Password", duration: Toast.lengthShort, gravity: Toast.top, backgroundColor: Colors.grey, backgroundRadius: 20.0);
-      print('icorrect');
       _isLoading = false;
       notifyListeners();
       return false;

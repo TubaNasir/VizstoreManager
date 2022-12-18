@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:vizstore_manager/views/add_product/add_product.dart';
 import 'package:vizstore_manager/controllers/product_list_provider.dart';
 import 'package:vizstore_manager/models/product_json.dart';
-import 'package:vizstore_manager/product_details/product_details.dart';
+import 'package:vizstore_manager/views/product_details/product_details.dart';
 import 'package:vizstore_manager/widgets/custom_button.dart';
 import 'package:vizstore_manager/widgets/header.dart';
 import 'package:vizstore_manager/widgets/loader.dart';

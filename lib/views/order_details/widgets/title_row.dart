@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/controllers/order_details_provider.dart';
+import 'package:vizstore_manager/models/order_json.dart';
 import 'package:vizstore_manager/widgets/custom_button.dart';
 import 'package:vizstore_manager/widgets/custom_button_secondary.dart';
 
-import '../../models/order_json.dart';
 
 class TitleRow extends StatefulWidget {
   const TitleRow({

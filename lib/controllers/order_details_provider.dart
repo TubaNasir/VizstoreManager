@@ -53,8 +53,6 @@ class OrderDetailsProvider with ChangeNotifier {
   }
 
   List<ProductJson> getProductList(OrderJson order){
-    print('all prods ${_products}' );
-
     List<ProductJson> products = order.cart.map((e) => getProductInfo(e.productId)).cast<ProductJson>().toList();
     return products;
   }

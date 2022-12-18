@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vizstore_manager/controllers/product_list_provider.dart';
-import 'package:vizstore_manager/product/widgets/products_table.dart';
+import 'package:vizstore_manager/views/product/widgets/products_table.dart';
 import 'package:vizstore_manager/widgets/side_drawer.dart';
 
 class ProductList extends StatefulWidget {
