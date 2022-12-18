@@ -38,23 +38,26 @@ class _SideDrawerState extends State<SideDrawer> {
       color: Colors.black87,
       child: Column(children: [
         DrawerHeader(
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 12,
+                radius: 30,
                 backgroundColor: PrimaryColor,
                 child: Text(
                   storeInitial,
                   style: const TextStyle(
                     color: Colors.black,
+                    fontSize: 25
                   ),
                 ),
               ),
-              SizedBox(width: 5),
-              Text(store.storeName,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold, color: Colors.white))
+              SizedBox(height:20),
+              Expanded(
+                child: Text(store.storeName,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold, color: Colors.white)),
+              )
             ],
           ),
         ),
