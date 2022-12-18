@@ -38,22 +38,24 @@ class _AddProductState extends State<OrderDetails> {
             ),
             Expanded(
               flex: 5,
-              child: Column(
-                children: [
-                  Header(title: "Orders"),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        TitleRow(id: widget.id),
-                        OrderInfo(),
-                        OrderSummary(),
-                      ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Header(title: "Orders"),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TitleRow(id: widget.id),
+                          OrderInfo(),
+                          OrderSummary(),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
