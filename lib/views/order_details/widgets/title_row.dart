@@ -27,11 +27,21 @@ class _TitleRowState extends State<TitleRow> {
 
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Expanded(
-        child: Text('Order ID: ${order.id}',
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(fontWeight: FontWeight.bold)),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: Colors.black12,
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Order ID: ${order.id}',
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    ?.copyWith(fontWeight: FontWeight.bold)),
+          ),
+        ),
       ),
       if (order.status == 'Placed')
         Row(

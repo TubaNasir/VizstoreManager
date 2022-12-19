@@ -25,7 +25,7 @@ class _AddProductFormState extends State<AddProductForm> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
 
@@ -249,6 +249,8 @@ class _AddProductFormState extends State<AddProductForm> {
                                   descriptionController.clear();
                                   quantityController.clear();
                                   priceController.clear();
+                                  picked = null;
+                                  setState(() {});
                                 }
                               } else {
                                 Toast.show('Please choose an image');

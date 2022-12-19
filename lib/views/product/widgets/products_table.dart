@@ -6,7 +6,6 @@ import 'package:vizstore_manager/models/product_json.dart';
 import 'package:vizstore_manager/views/product_details/product_details.dart';
 import 'package:vizstore_manager/widgets/custom_button.dart';
 import 'package:vizstore_manager/widgets/header.dart';
-import 'package:vizstore_manager/widgets/loader.dart';
 
 class ProductTable extends StatefulWidget {
   const ProductTable({
@@ -28,97 +27,87 @@ class _ProductTableState extends State<ProductTable> {
   @override
   Widget build(BuildContext context) {
     List<ProductJson> products = context.watch<ProductListProvider>().products;
-    bool isLoading = context.watch<ProductListProvider>().isLoading;
 
     return Column(
       children: [
         Header(title: "Products"),
-        Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('My Products',
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle1
-                              ?.copyWith(fontWeight: FontWeight.bold)),
-                      CustomButton(
-                          text: "Add New",
-                          pressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) => AddProduct()));
-                          })
-                    ]),
-                SizedBox(height: 10),
-                Container(
-                  padding: EdgeInsets.all(4.0),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: DataTable(
-                          columns: [
-                            DataColumn(
-                                label: Text(
-                              "ID",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              "Title",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              "Price",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              "Stock",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              "Sold",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                          ],
-                          rows: List.generate(
-                            products.length,
-                            (index) => ProductRow(products[index], () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(
-                                      builder: (_) => ProductDetails(
-                                          product: products[index])))
-                                  .then(
-                                    (value) => context
-                                        .read<ProductListProvider>()
-                                        .getMyProducts(),
-                                  );
-                            }),
-                          ),
-                        ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('My Products',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1
+                          ?.copyWith(fontWeight: FontWeight.bold)),
+                  CustomButton(
+                      text: "Add New",
+                      pressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => AddProduct()));
+                      })
+                ]),
+            SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.all(4.0),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: DataTable(
+                      columns: [
+                        DataColumn(
+                            label: Text(
+                          "ID",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          "Title",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          "Price",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          "Stock",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          "Sold",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                      ],
+                      rows: List.generate(
+                        products.length,
+                        (index) => ProductRow(products[index], () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(
+                                  builder: (_) => ProductDetails(
+                                      product: products[index])))
+                              .then(
+                                (value) => context
+                                    .read<ProductListProvider>()
+                                    .getMyProducts(),
+                              );
+                        }),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ),
-            if (isLoading)
-              Positioned(
-                  top: MediaQuery.of(context).size.height * 0.5,
-                  left: MediaQuery.of(context).size.width * 0.5,
-                  child: Loader())
-          ],
+          ]),
         ),
       ],
     );

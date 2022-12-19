@@ -6,6 +6,7 @@ import 'package:vizstore_manager/views/order_details/widgets/order_info.dart';
 import 'package:vizstore_manager/views/order_details/widgets/order_summary.dart';
 import 'package:vizstore_manager/views/order_details/widgets/title_row.dart';
 import 'package:vizstore_manager/widgets/header.dart';
+import 'package:vizstore_manager/widgets/loader.dart';
 import 'package:vizstore_manager/widgets/side_drawer.dart';
 
 class OrderDetails extends StatefulWidget {
@@ -27,6 +28,9 @@ class _AddProductState extends State<OrderDetails> {
 
   @override
   Widget build(BuildContext context) {
+
+    bool isLoading = context.watch<OrderDetailsProvider>().isLoading;
+
     return Scaffold(
       body: SafeArea(
         child: Row(
@@ -39,21 +43,30 @@ class _AddProductState extends State<OrderDetails> {
             Expanded(
               flex: 5,
               child: SingleChildScrollView(
-                child: Column(
+                child: Stack(
                   children: [
-                    Header(title: "Orders"),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          TitleRow(id: widget.id),
-                          OrderInfo(),
-                          OrderSummary(),
-                        ],
-                      ),
+                    Column(
+                      children: [
+                        Header(title: "Orders"),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              TitleRow(id: widget.id),
+                              OrderInfo(),
+                              OrderSummary(),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
+                    if (isLoading)
+                      Positioned(
+                          top: MediaQuery.of(context).size.height * 0.5,
+                          left: MediaQuery.of(context).size.width * 0.35,
+                          child: Loader())
                   ],
                 ),
               ),

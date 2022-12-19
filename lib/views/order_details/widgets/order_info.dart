@@ -29,7 +29,9 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Placed on:")),
-            Text("${order.date_created}"),
+            Text(
+                "${order.date_created.day}/${order.date_created.month}/${order.date_created.year}",
+                style: TextStyle(fontWeight: FontWeight.w600)),
           ],
         ),
         Divider(color: Colors.black12),
@@ -38,7 +40,8 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Placed by: ")),
-            Text("${user.firstName} ${user.lastName}"),
+            Text("${user.firstName} ${user.lastName}",
+                style: TextStyle(fontWeight: FontWeight.w600)),
           ],
         ),
         Divider(color: Colors.black12),
@@ -47,7 +50,8 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Contact")),
-            Text(user.contact),
+            Text(user.contact,
+                style: TextStyle(fontWeight: FontWeight.w600)),
           ],
         ),
         Divider(color: Colors.black12),
@@ -56,7 +60,7 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Address")),
-            Text(order.address),
+            Text(order.address, style: TextStyle(fontWeight: FontWeight.w600)),
           ],
         ),
         Divider(color: Colors.black12),
@@ -65,7 +69,7 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("City")),
-            Text(order.city),
+            Text(order.city, style: TextStyle(fontWeight: FontWeight.w600)),
           ],
         ),
         Divider(color: Colors.black12),
@@ -74,7 +78,14 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Status")),
-            Text(order.status),
+            Container( decoration: BoxDecoration(
+              color: order.status == 'Confirmed'
+                  ? Colors.lightGreen
+                  : order.status == 'Cancelled'
+                  ? Colors.red
+                  : Colors.amberAccent,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),child: Text(order.status, style: TextStyle(fontWeight: FontWeight.w600))),
           ],
         ),
         Divider(color: Colors.black12),
@@ -83,7 +94,8 @@ class _OrderInfoState extends State<OrderInfo> {
             Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Total")),
-            Text("Rs. ${order.total}"),
+            Text("Rs. ${order.total}",
+                style: TextStyle(fontWeight: FontWeight.w600)),
           ],
         ),
         Divider(color: Colors.black12),

@@ -5,6 +5,7 @@ import 'package:toast/toast.dart';
 import 'package:vizstore_manager/controllers/add_product_provider.dart';
 import 'package:vizstore_manager/views/add_product/widgets/add_product_form.dart';
 import 'package:vizstore_manager/widgets/header.dart';
+import 'package:vizstore_manager/widgets/loader.dart';
 import 'package:vizstore_manager/widgets/side_drawer.dart';
 
 class AddProduct extends StatefulWidget {
@@ -25,6 +26,7 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext context) {
+    bool isAdding = context.watch<AddProductProvider>().isAdding;
     ToastContext().init(context);
 
     return Scaffold(
@@ -51,7 +53,16 @@ class _AddProductState extends State<AddProduct> {
                                 .textTheme
                                 .subtitle1
                                 ?.copyWith(fontWeight: FontWeight.bold)),
-                        AddProductForm()
+                        Stack(
+                          children: [
+                            AddProductForm(),
+                            if (isAdding)
+                              Positioned(
+                                  top: MediaQuery.of(context).size.height * 0.3,
+                                  left: MediaQuery.of(context).size.width * 0.35,
+                                  child: Loader())
+                          ],
+                        )
                       ],
                     ),
                   ),

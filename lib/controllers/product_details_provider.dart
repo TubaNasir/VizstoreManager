@@ -19,10 +19,12 @@ class ProductDetailsProvider with ChangeNotifier {
   StoreJson _user = StoreJson.empty();
   bool _editable = false;
   String _dropdownvalue = "Clothes";
+  bool _isEditing = false;
 
   StoreJson get user => _user;
   bool get editable => _editable;
   String get dropdownvalue => _dropdownvalue;
+  bool get isEditing => _isEditing;
 
   Future<void> setProduct(ProductJson product) async {
     _product = product;
@@ -35,9 +37,13 @@ class ProductDetailsProvider with ChangeNotifier {
   }
 
   Future<void> updateProduct(String title, String description, int stock, int price, String category) async {
+    _isEditing = true;
+    notifyListeners();
     ProductJson product = _product.copyWith(title:title, description: description, stock: stock, price: price, category:category);
     ProductJson updatedProduct = await _productRepository.updateProduct(product);
     _product = updatedProduct;
+    notifyListeners();
+    _isEditing = false;
     notifyListeners();
     Toast.show("Product updated", duration: Toast.lengthShort, gravity: Toast.top, backgroundColor: Colors.grey, backgroundRadius: 20.0);
   }
@@ -54,8 +60,12 @@ class ProductDetailsProvider with ChangeNotifier {
   }
 
   void changeImage(Uint8List fileBytes) async{
+    _isEditing = true;
+    notifyListeners();
     ProductJson updatedProduct = await _productRepository.changeImage(_product, fileBytes);
     _product = updatedProduct;
+    notifyListeners();
+    _isEditing = false;
     notifyListeners();
   }
 

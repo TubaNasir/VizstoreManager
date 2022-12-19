@@ -19,18 +19,24 @@ class OrderDetailsProvider with ChangeNotifier {
   OrderJson _order = OrderJson.empty();
   UserJson _user = UserJson.empty();
   List<ProductJson> _products = [];
+  bool _isLoading = false;
 
   OrderJson get order => _order;
   UserJson get user => _user;
+  bool get isLoading => _isLoading;
 
 
   Future<void> getOrderInfo(String id) async {
+    _isLoading = true;
+    notifyListeners();
     _order = await _orderRepository.getOrderInfo(id);
     notifyListeners();
   }
 
   Future<void> getUserInfo() async {
     _user = await _userRepository.getUser(_order.userId!);
+    notifyListeners();
+    _isLoading = false;
     notifyListeners();
   }
 
