@@ -72,7 +72,7 @@ class _LoginState extends State<Login> {
                 if (isLoading)
                   Positioned(
                       top: MediaQuery.of(context).size.height * 0.5,
-                      left: MediaQuery.of(context).size.width * 0.5,
+                      left: MediaQuery.of(context).size.width * 0.48,
                       child: Loader())
               ],
             ),

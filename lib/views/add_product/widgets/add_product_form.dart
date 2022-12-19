@@ -19,16 +19,17 @@ class AddProductForm extends StatefulWidget {
 
 class _AddProductFormState extends State<AddProductForm> {
   late Uint8List fileBytes;
+  var picked;
 
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
-    TextEditingController titleController = TextEditingController();
-    TextEditingController descriptionController = TextEditingController();
-    TextEditingController priceController = TextEditingController();
-    TextEditingController quantityController = TextEditingController();
-    String dropdownvalue = 'Clothes';
-    var picked;
 
+    String dropdownvalue = context.watch<AddProductProvider>().dropdownvalue;
     final _formKey = GlobalKey<FormState>();
 
     return Form(
@@ -61,7 +62,6 @@ class _AddProductFormState extends State<AddProductForm> {
                         picked = await FilePickerWeb.platform.pickFiles();
                         if (picked != null) {
                           fileBytes = picked.files.first.bytes;
-                          String fileName = picked.files.first.name;
                           setState(() {});
                         }
                       })),
@@ -84,7 +84,7 @@ class _AddProductFormState extends State<AddProductForm> {
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       suffixIcon:
-                      Icon(Icons.abc), //SuffixIcon(icon: Icons.email)
+                          Icon(Icons.abc), //SuffixIcon(icon: Icons.email)
                     ),
                     validator: (text) {
                       if (text == null || text.isEmpty) {
@@ -130,7 +130,7 @@ class _AddProductFormState extends State<AddProductForm> {
                           ),
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           suffixIcon:
-                          Icon(Icons.abc), //SuffixIcon(icon: Icons.email)
+                              Icon(Icons.abc), //SuffixIcon(icon: Icons.email)
                         ),
                         validator: (text) {
                           if (text == null || text.isEmpty) {
@@ -157,7 +157,7 @@ class _AddProductFormState extends State<AddProductForm> {
                           ),
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           suffixIcon:
-                          Icon(Icons.abc), //SuffixIcon(icon: Icons.email)
+                              Icon(Icons.abc), //SuffixIcon(icon: Icons.email)
                         ),
                         validator: (text) {
                           if (text == null || text.isEmpty) {
@@ -175,8 +175,7 @@ class _AddProductFormState extends State<AddProductForm> {
                   ],
                 ),
                 SizedBox(height: 30),
-                Stack(
-                    children: [
+                Stack(children: [
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: "Category",
@@ -215,48 +214,50 @@ class _AddProductFormState extends State<AddProductForm> {
                           }).toList(),
                           onChanged: (String? newValue) {
                             setState(() {
-                              dropdownvalue = newValue!;
+                              context
+                                  .read<AddProductProvider>()
+                                  .setDropdownValue(newValue!);
                             });
                           },
                         ),
                       ),
                     ),
                   ),
-                    ]),
+                ]),
                 SizedBox(height: 20),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                          width: 200,
-                          child: CustomButton(
-                            text: 'Add Product',
-                            pressed: () async {
-                              if (_formKey.currentState!.validate()) {
-                                if (picked != null) {
-                                  bool success = await context
-                                      .read<AddProductProvider>()
-                                      .addProduct(
-                                      titleController.text,
-                                      descriptionController.text,
-                                      int.parse(quantityController.text),
-                                      int.parse(priceController.text),
-                                      dropdownvalue,
-                                      fileBytes);
-                                  if (success) {
-                                    titleController.clear();
-                                    descriptionController.clear();
-                                    quantityController.clear();
-                                    priceController.clear();
-                                  }
-                                } else {
-                                  Toast.show('Please choose an image');
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        width: 200,
+                        child: CustomButton(
+                          text: 'Add Product',
+                          pressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              if (picked != null) {
+                                bool success = await context
+                                    .read<AddProductProvider>()
+                                    .addProduct(
+                                        titleController.text,
+                                        descriptionController.text,
+                                        int.parse(quantityController.text),
+                                        int.parse(priceController.text),
+                                        dropdownvalue,
+                                        fileBytes);
+                                if (success) {
+                                  titleController.clear();
+                                  descriptionController.clear();
+                                  quantityController.clear();
+                                  priceController.clear();
                                 }
+                              } else {
+                                Toast.show('Please choose an image');
                               }
-                            },
-                          )),
-                    ],
-                  )
+                            }
+                          },
+                        )),
+                  ],
+                )
               ],
             ),
           ),

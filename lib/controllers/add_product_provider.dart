@@ -14,9 +14,12 @@ class AddProductProvider with ChangeNotifier {
 
   StoreJson _user = StoreJson.empty();
   List<ProductJson> _products = [];
+  String _dropdownvalue = "Clothes";
+
 
   StoreJson get user => _user;
   List<ProductJson> get products => _products;
+  String get dropdownvalue => _dropdownvalue;
 
   Future<void> getUser() async {
     _user = await _userRepository.getStore();
@@ -36,11 +39,16 @@ class AddProductProvider with ChangeNotifier {
             image: ''),
         filebytes);
     notifyListeners();
-    Toast.show("Incorrect Email or Password",
+    Toast.show("Product added successfully",
         duration: Toast.lengthShort,
         gravity: Toast.top,
         backgroundColor: Colors.grey,
         backgroundRadius: 20.0);
     return success;
+  }
+
+  void setDropdownValue(String value){
+    _dropdownvalue = value;
+    notifyListeners();
   }
 }

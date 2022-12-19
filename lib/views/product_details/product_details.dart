@@ -312,7 +312,6 @@ class _AddProductState extends State<ProductDetails> {
                                               }).toList(),
                                               onChanged: editable
                                                   ? (String? newValue) {
-                                                      print(newValue);
                                                       setState(() {
                                                         context
                                                             .read<

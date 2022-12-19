@@ -81,7 +81,9 @@ class _LoginFormState extends State<LoginForm> {
                               }
                               return null;
                             },
-                            controller: _emailController),
+                            controller: _emailController,
+                            autovalidateMode:
+                            AutovalidateMode.onUserInteraction),
                         SizedBox(
                           height: 32,
                         ),
@@ -107,7 +109,9 @@ class _LoginFormState extends State<LoginForm> {
                               return null;
                             },
                             obscureText: !passwordVisible,
-                            controller: _passwordController),
+                            controller: _passwordController,
+                            autovalidateMode:
+                            AutovalidateMode.onUserInteraction),
                         isLoading
                             ? SizedBox(
                                 height: 64,
