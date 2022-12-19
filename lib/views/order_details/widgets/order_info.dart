@@ -85,7 +85,10 @@ class _OrderInfoState extends State<OrderInfo> {
                   ? Colors.red
                   : Colors.amberAccent,
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            ),child: Text(order.status, style: TextStyle(fontWeight: FontWeight.w600))),
+            ),child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(order.status, style: TextStyle(fontWeight: FontWeight.w600)),
+            )),
           ],
         ),
         Divider(color: Colors.black12),
