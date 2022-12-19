@@ -30,6 +30,7 @@ class _OrderItemTableState extends State<OrderItemTable> {
         context.read<OrderDetailsProvider>().getProductList(order);
 
     return DataTable(
+      dataRowHeight: 100,
       columns: [
         DataColumn(
             label: Text(
