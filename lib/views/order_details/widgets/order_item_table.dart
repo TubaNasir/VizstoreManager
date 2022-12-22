@@ -62,7 +62,7 @@ class _OrderItemTableState extends State<OrderItemTable> {
 OrderRow(ProductJson product, int quantity, VoidCallback onPressed) {
   return DataRow(cells: [
     DataCell(InkWell(onTap: onPressed, child: Text(product.id!))),
-    DataCell(Text("${product.title}")),
+    DataCell(SizedBox(width: 100, child: Text("${product.title}", overflow: TextOverflow.ellipsis, maxLines: 3,),)),
     DataCell(Text("x${quantity}")),
   ]);
 }

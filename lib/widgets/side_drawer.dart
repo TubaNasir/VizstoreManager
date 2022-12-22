@@ -55,6 +55,7 @@ class _SideDrawerState extends State<SideDrawer> {
               SizedBox(height:20),
               Expanded(
                 child: Text(store.storeName,
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold, color: Colors.white)),
               )
@@ -96,26 +97,34 @@ class _SideDrawerState extends State<SideDrawer> {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                        content: Text('Are you sure you want to logout?'),
+                        content: Text('Are you sure you want to logout?', style: TextStyle(fontWeight: FontWeight.bold),),
                         actions: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              CustomButtonSecondary(
-                                pressed: () => {
-                                  context.read<SideDrawerProvider>().logout(),
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => Login(),
+                              SizedBox(
+                                height: 40,
+                                width: 90,
+                                child: CustomButtonSecondary(
+                                  pressed: () => {
+                                    context.read<SideDrawerProvider>().logout(),
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => Login(),
+                                      ),
                                     ),
-                                  ),
-                                  context.read<SideDrawerProvider>().setPage('products'),
-                              },
-                                text: 'Yes',
+                                    context.read<SideDrawerProvider>().setPage('products'),
+                                },
+                                  text: 'Yes',
+                                ),
                               ),
-                              CustomButton(
-                                pressed: () => Navigator.pop(context),
-                                text: 'No',
+                              SizedBox(
+                                height: 40,
+                                width: 90,
+                                child: CustomButton(
+                                  pressed: () => Navigator.pop(context),
+                                  text: 'No',
+                                ),
                               ),
                             ],
                           ),

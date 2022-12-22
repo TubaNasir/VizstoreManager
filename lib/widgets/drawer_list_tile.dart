@@ -23,6 +23,7 @@ class DrawerListTile extends StatelessWidget {
             Icon(icon, color: selected ? Colors.white : TextColor2, size: 16),
         title: Text(
           title,
+          overflow: TextOverflow.ellipsis,
           style: selected
               ? TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
               : TextStyle(color: TextColor2),

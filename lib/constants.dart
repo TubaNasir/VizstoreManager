@@ -11,7 +11,7 @@ const SecondaryColor = Color(0xFFECE7E7);
 const TextColor1 = Colors.black;
 const TextColor2 = Color(0xFF8C8A8A);
 
-final categories = ['Electronics', 'Lifestyle', 'Clothes', 'Sports', 'Furniture'];
+final categories = ['Toys', 'Lifestyle', 'Clothes', 'Shoes', 'Furniture'];
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

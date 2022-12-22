@@ -41,7 +41,7 @@ class _OrderInfoState extends State<OrderInfo> {
                 width: MediaQuery.of(context).size.width * 0.2,
                 child: Text("Placed by: ")),
             Text("${user.firstName} ${user.lastName}",
-                style: TextStyle(fontWeight: FontWeight.w600)),
+                style: TextStyle(fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis)),
           ],
         ),
         Divider(color: Colors.black12),
@@ -86,7 +86,7 @@ class _OrderInfoState extends State<OrderInfo> {
                   : Colors.amberAccent,
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(6.0),
               child: Text(order.status, style: TextStyle(fontWeight: FontWeight.w600)),
             )),
           ],

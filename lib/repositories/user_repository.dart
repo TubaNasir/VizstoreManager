@@ -25,7 +25,16 @@ class UserRepository {
             (error) => print("Failed to add notification. Error : ${error}"));
   }
 
+  Future<List<UserJson>> fetchUsersList() async {
+    List<UserJson> users = [];
+    await db.collection("user").get().then((event) {
+      users = event.docs.map((e) => UserJson.fromJson(e.data(), e.id)).toList();
+    });
+
+    return users;
+
+  }
+
+  }
 
 
-
-}

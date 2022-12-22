@@ -117,7 +117,7 @@ class _ProductTableState extends State<ProductTable> {
 ProductRow(ProductJson product, VoidCallback onPressed) {
   return DataRow(cells: [
     DataCell(InkWell(onTap: onPressed, child: Text(product.id!))),
-    DataCell(Text(product.title)),
+    DataCell(SizedBox(width: 300, child: Text(product.title, overflow: TextOverflow.ellipsis,))),
     DataCell(Text("${product.price}")),
     DataCell(Text("${product.stock}")),
     DataCell(Text("${product.sold}")),
