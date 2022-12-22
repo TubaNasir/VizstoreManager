@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vizstore_manager/models/notification_json.dart';
 import 'package:vizstore_manager/models/order_json.dart';
 import 'package:vizstore_manager/models/product_json.dart';
 import 'package:vizstore_manager/models/user_json.dart';
@@ -59,10 +60,15 @@ class OrderDetailsProvider with ChangeNotifier {
     return products;
   }
 
-  Future<void> updateOrderStatus(String status) async {
+  Future<void> updateOrderStatus(String status, String id) async {
     OrderJson order = _order.copyWith(status: status);
     await _orderRepository.updateOrder(order);
     _order = await _orderRepository.getOrderInfo(_order.id!);
+    await _userRepository.sendNotification(NotificationItemJson(
+        notificationId: '${_order.id} ${DateTime.now()}',
+        orderId: _order.id!,
+        message: 'You order# ${_order.id} has been confirmed!',
+        dateTime: DateTime.now()), id);
     notifyListeners();
   }
 }

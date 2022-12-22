@@ -51,14 +51,14 @@ class _TitleRowState extends State<TitleRow> {
                 pressed: () {
                   context
                       .read<OrderDetailsProvider>()
-                      .updateOrderStatus("Cancelled");
+                      .updateOrderStatus("Cancelled", order.userId!);
                 }),
             CustomButton(
                 text: "Accept",
                 pressed: () {
                   context
                       .read<OrderDetailsProvider>()
-                      .updateOrderStatus("Confirmed");
+                      .updateOrderStatus("Confirmed", order.userId!);
                 }),
           ],
         )
